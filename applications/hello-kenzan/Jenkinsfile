@@ -14,7 +14,7 @@ node {
 
     stage "Build"
     
-        sh "docker build -t ${imageName} part1/hello-kenzan"
+        sh "docker build -t ${imageName} hello-kenzan"
     
     stage "Push"
 
@@ -22,5 +22,5 @@ node {
 
     stage "Deploy"
 
-        sh "sed 's#$BUILD_TAG#'$BUILDIMG'#' part1/hello-kenzan/k8s/deployment.yaml | kubectl apply -f -"
+        sh "sed 's#$BUILD_TAG#'$BUILDIMG'#' hello-kenzan/k8s/deployment.yaml | kubectl apply -f -"
 }
