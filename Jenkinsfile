@@ -22,6 +22,7 @@ node {
 
     stage "Deploy"
 
+	sh "sed 's#$BUILD_TAG#'$BUILDIMG'#' applications/hello-kenzan/k8s/deployment.yaml |grep image"
 	sh "sed 's#$BUILD_TAG#'$BUILDIMG'#' applications/hello-kenzan/k8s/deployment.yaml | kubectl apply -f -"
 
 }
